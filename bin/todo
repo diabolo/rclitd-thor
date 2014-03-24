@@ -1,4 +1,6 @@
 #!/usr/bin/env ruby
 #
-debugger
-1
+require 'todo'
+require 'todo'
+#
+Todo::Runner.new(ARGV.dup).execute!

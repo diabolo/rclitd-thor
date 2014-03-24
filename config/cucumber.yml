@@ -1,0 +1,10 @@
+<%
+require = "-r features/support/ -r features/step_definitions"
+format = "--format #{ENV['CUCUMBER_FORMAT'] || 'pretty'}"
+snippets = "-I classic"
+std_opts = " #{require} #{format} #{snippets} --strict --tags ~@wip"
+%>
+default: <%= std_opts %> features
+all: <%= std_opts %>
+wip: <%= snippets %> --tags @wip:3 --wip features
+

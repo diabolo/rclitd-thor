@@ -9,12 +9,12 @@ module Todo
 
     desc "new TASK_DESCRIPTION", "add a new task to your task list"
     def new(desc)
-      Todo::CMD.add_task(desc)
+      Todo::CMD.add_task(desc, options)
     end
 
     desc "list", "list your tasks"
     def list
-      Todo::CMD.list_tasks
+      Todo::CMD.list_tasks(options)
     end
 
   end

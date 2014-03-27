@@ -52,8 +52,24 @@ When /^I add (\d+) tasks$/ do |num|
   num.to_i.times { add_task }
 end
 
+When /^I add (\d+) tasks with the custom location$/ do |num|
+  num.to_i.times {
+    add_task location: custom_location
+  }
+end
+
 Then /^there should be (\d+) tasks$/ do |num|
   task_count.should == num.to_i
+end
+
+Then /^I should see (\d+) tasks when I list tasks from the custom location$/ do |num|
+  task_count(location: custom_location).should == num.to_i
+end
+
+Then /^there should be (\d+) tasks? in the custom location$/ do |num|
+  File.open(custom_location) do |f|
+    f.readlines.count.should == num.to_i
+  end
 end
 
 Given /^there is a custom location$/ do
@@ -62,9 +78,5 @@ end
 
 When /^I add a task with the custom location$/ do
   add_task location: custom_location
-end
-
-Then /^my task should be stored in the custom location$/ do
-  task_count(location: custom_location).should == 1
 end
 

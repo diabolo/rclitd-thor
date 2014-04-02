@@ -26,7 +26,7 @@ module TaskSH
 
   def count_completed_tasks(loc)
     count = File.open(loc) do |f|
-      f.readlines.count { |l| l.match /^x / }
+      f.readlines.count { |l| l.match Todo::Task::DONE_RGX}
     end
   end
 

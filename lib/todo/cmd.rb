@@ -22,7 +22,7 @@ module Todo
       y = File.open(Todo.location(options)) do |f|
         x = f.readlines
         x.each_with_index do |line,index|
-          x[index] = "x #{line}" if index == task.to_i - 1
+          x[index] = "#{Todo::Task::DONE_PFX}#{line}" if index == task.to_i - 1
         end
         x
       end

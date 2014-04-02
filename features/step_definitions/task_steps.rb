@@ -36,3 +36,14 @@ Then /^I should see (\d+) tasks when I list tasks from the custom location$/ do 
   count_listed_tasks(location: custom_location).should == num.to_i
 end
 
+Given /^I have added some tasks$/ do
+  some.times { add_task }
+end
+
+When /^I complete a task$/ do
+  complete_task
+end
+
+Then /^there should be a completed task$/ do
+  count_tasks(type: :completed).should == 1
+end

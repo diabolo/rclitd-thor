@@ -18,5 +18,21 @@ module Todo
       end
     end
 
+    def self.do(task, options={})
+      y = File.open(Todo.location(options)) do |f|
+        x = f.readlines
+        x.each_with_index do |line,index|
+          x[index] = "x #{line}" if index == task.to_i - 1
+        end
+        x
+      end
+
+      File.open(Todo.location(options), 'w') do |f|
+        y.each do |line|
+          f.puts line
+        end
+      end
+    end
+
   end
 end

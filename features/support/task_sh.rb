@@ -31,11 +31,18 @@ module TaskSH
   end
 
   def count_listed_tasks(attrs={})
-    `#{xec} list #{opts(attrs)} | wc -l`.chomp.to_i
+    # all_output
+    # debugger
+    # `#{xec} list #{opts(attrs)} | wc -l`.chomp.to_i
+    all_output.lines.count
   end
 
   def complete_task(attrs={})
     run_simple("#{xec} do 1 #{opts(attrs)}")
+  end
+
+  def list_tasks(attrs={})
+    run_simple("#{xec} list #{opts(attrs)}")
   end
 end
 World TaskSH

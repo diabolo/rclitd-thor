@@ -1,3 +1,12 @@
+
+When /^I list my completed tasks$/ do
+  list_tasks type: :completed
+end
+
+Then /^I should see one task$/ do
+  count_listed_tasks.should == 1
+end
+
 Given /^there is a custom location$/ do
   no_op
 end
@@ -33,6 +42,7 @@ Then /^there should be (\d+) tasks? in the custom location$/ do |num|
 end
 
 Then /^I should see (\d+) tasks when I list tasks from the custom location$/ do |num|
+  list_tasks(location: custom_location)
   count_listed_tasks(location: custom_location).should == num.to_i
 end
 

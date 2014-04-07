@@ -7,13 +7,14 @@ Feature: Complete task
   Background:
     Given I have added some tasks
 
-  @wip
   Scenario: Complete a task
     When I complete a task
     Then there should be a completed task
 
+  @wip
   Scenario: List completed task
-    When I list my completed tasks
+    When I complete a task
+    And I list my completed tasks
     Then I should see one task
 
 

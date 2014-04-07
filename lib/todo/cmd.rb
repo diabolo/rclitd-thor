@@ -11,11 +11,18 @@ module Todo
     end
 
     def self.list_tasks(options)
-      File.open(Todo.location(options)) do |f|
-        f.readlines.each do |line|
-          puts line
-        end
+      tasks = Todo::Tasks.new(options)
+      tasks.list.each do |line|
+        puts line
       end
+
+      # Close tasks!
+
+      # File.open(Todo.location(options)) do |f|
+      #   f.readlines.each do |line|
+      #     puts line
+      #   end
+      # end
     end
 
     def self.do(task, options={})

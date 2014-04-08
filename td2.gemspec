@@ -21,6 +21,7 @@ spec = Gem::Specification.new do |s|
   s.add_development_dependency('rdoc')
   s.add_development_dependency('aruba')
   s.add_development_dependency('debugger')
+  s.add_development_dependency('rspec')
   
   s.add_dependency 'thor'
 end

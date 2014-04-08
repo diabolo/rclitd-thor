@@ -7,7 +7,10 @@ module CmdSH
   end
 
   def opts(attrs)
-    "-f #{attrs[:location]}" if attrs[:location]
+    opts = ''.tap do |o|
+      o << " -f #{attrs[:location]}" if attrs[:location]
+      o << " -t #{attrs[:type]}" if attrs[:type]
+    end
   end
 end
 World CmdSH

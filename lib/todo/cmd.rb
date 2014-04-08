@@ -11,9 +11,21 @@ module Todo
     end
 
     def self.list_tasks(options)
-      File.open(Todo.location(options)) do |f|
-        f.readlines.each do |line|
-          puts line
+      Todo::Tasks.new(options).list
+    end
+
+    def self.do(task, options={})
+      y = File.open(Todo.location(options)) do |f|
+        x = f.readlines
+        x.each_with_index do |line,index|
+          x[index] = "#{Todo::Task::DONE_PFX}#{line}" if index == task.to_i - 1
+        end
+        x
+      end
+
+      File.open(Todo.location(options), 'w') do |f|
+        y.each do |line|
+          f.puts line
         end
       end
     end

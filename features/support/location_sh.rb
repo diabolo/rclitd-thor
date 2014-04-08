@@ -7,7 +7,6 @@ module LocationSH
     "#{default_location}.custom"
   end
 
-  def no_op; end
 end
 World LocationSH
 
